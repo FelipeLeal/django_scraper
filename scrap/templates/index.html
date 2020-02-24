@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="GET" id="update">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+</form>
+<br>
+{% endblock %}
+{% block catalog %}
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+    {% for item in books %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.product_description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+{% block javascript %}
+<script>
+    $('#update').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/ajax/update/',
+            type: 'GET',
+            success: function (data) {
+                window.location.reload();
+            }
+        });
+    });
+</script>
+{% endblock %}
