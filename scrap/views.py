@@ -1,9 +1,6 @@
-from django.shortcuts import render
-
-# Create your views here.
-
 import requests
 import re
+from django.shortcuts import render
 from django.http import HttpResponse
 from bs4 import BeautifulSoup
 from .models import Book, Category
@@ -103,4 +100,3 @@ def get_books_urls_by_page() -> list:
         books_urls.extend(get_books_urls(page))
 
     return books_urls
-

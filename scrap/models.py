@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.db import models
 
 
@@ -15,3 +16,6 @@ class Book(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
+
+admin.site.register(Book)
+admin.site.register(Category)
