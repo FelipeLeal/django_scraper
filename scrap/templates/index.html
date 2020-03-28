@@ -16,11 +16,17 @@
 <table>
     <tr>
         <th>Title</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Stock</th>
         <th>Description</th>
     </tr>
     {% for item in books %}
     <tr>
         <td>{{ item.title }}</td>
+        <td><img src="{{ item.thumbnail }}" alt=""></td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.stock }}</td>
         <td>{{ item.product_description }}</td>
     </tr>
     {% endfor %}
@@ -31,8 +37,8 @@
     $('#update').submit(function (e) {
         e.preventDefault();
         $.ajax({
-            url: '/ajax/update/',
-            type: 'GET',
+            url: '/api/v1/books/update_catalog/',
+            type: 'PUT',
             success: function (data) {
                 window.location.reload();
             }
