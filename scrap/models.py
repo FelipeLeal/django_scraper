@@ -5,6 +5,9 @@ from django.db import models
 # Create your models here.
 
 class Book(models.Model):
+    class Meta:
+        ordering = ['id']
+
     title = models.CharField(max_length=255)
     thumbnail = models.URLField(max_length=255)
     price = models.FloatField()
@@ -16,6 +19,3 @@ class Book(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=255)
-
-admin.site.register(Book)
-admin.site.register(Category)

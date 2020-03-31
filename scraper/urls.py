@@ -30,7 +30,7 @@ router.register(r'books', api_views.BookViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
-    path('api/v1/', include(router.urls)),
+    path('api/v1/', include((router.urls, 'scrap'), namespace='scrap')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
     # path('ajax_update/', index),
 ]
